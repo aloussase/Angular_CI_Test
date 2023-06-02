@@ -12,16 +12,20 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'light-switch'`, () => {
+  it('should change state correctly when clicked', () => {
     const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('light-switch');
-  });
+    const component = fixture.componentInstance;
 
-  it('should render title', () => {
+    expect(component.on).withContext('starts off').toBe(false);
+    component.onClick();
+    expect(component.on).withContext('is on after click').toBe(true);
+  })
+
+  it('should render the correct message', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('light-switch app is running!');
+    expect(compiled.querySelector('span')?.textContent)
+      .toContain('I\'m off!');
   });
 });

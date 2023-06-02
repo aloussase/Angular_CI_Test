@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'light-switch';
+  on = false
+
+  onClick(): void {
+    this.on = !this.on
+  }
+
+  message(): string {
+    return 'I\'m ' + (this.on ? 'on' : 'off') + '!';
+  }
 }
